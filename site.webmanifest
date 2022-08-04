@@ -1,0 +1,13 @@
+{
+    "name":"Jovan De Guia",
+    "short_name":"jxmked",
+    "icons":[{
+        "src":"https://jxmked.github.io/jxmked/assets/images/xio-dark.webp",
+        "sizes":"1048x1048",
+        "type":"image/webp"
+    }],
+    
+    "theme_color":"#48484A",
+    "background_color":"#363638",
+    "display":"standalone"
+}
