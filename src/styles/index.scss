@@ -1,0 +1,11 @@
+@use './nav.scss';
+@use './h3';
+
+body {
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 80vh;
+  padding-top: 4rem; // Matches the height of nav bar
+}

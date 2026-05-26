@@ -1,0 +1,21 @@
+@use './vendor/normalize';
+@use './css-variables/fonts' as cssFonts;
+@use './css-variables/colors' as cssColors;
+@use './css-variables/utils' as cssUtils;
+
+:root {
+  @include cssFonts.fontinators;
+  @include cssColors.apple_webkit;
+  @include cssUtils.utils;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: auto;
+  white-space: nowrap;
+  border: none;
+  background-color: #fff;
+  display: block;
+}

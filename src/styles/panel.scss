@@ -1,0 +1,43 @@
+@use './abstracts/fonts' as ff;
+@use './abstracts/colours' as cc;
+
+%listReset {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin listItem {
+  > li {
+    @extend %listReset;
+    padding: 0.7rem 0;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid cc.$aw-dl-gray-4;
+    }
+
+    > a {
+      font-family: ff.$primary-paragraph;
+      font-weight: 500;
+
+      &:before {
+        content: '/';
+      }
+    }
+  }
+}
+
+body > div#panel {
+  padding: 1.7rem;
+
+  border: 1px solid cc.$aw-dl-gray-4;
+  color: cc.$aw-dd-gray-2;
+  border-radius: 14px;
+
+  > ul {
+    @extend %listReset;
+
+    list-style-type: none;
+
+    @include listItem;
+  }
+}

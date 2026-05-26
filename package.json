@@ -1,0 +1,71 @@
+{
+  "name": "hero-page",
+  "description": "Landing page",
+  "version": "0.1.0",
+  "main": "webpack.config.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.mjs --mode production --devtool false",
+    "dev": "webpack --config webpack.config.mjs --mode development --devtool source-map --watch",
+    "start": "npm run dev",
+    "prettier-format": "prettier --config .prettierrc \"./src\" \"./types\" --write",
+    "prettier-format:md": "prettier --config .prettierrc \"./*.((m|c)js|md)\" --write",
+    "eslint": "eslint ./src/**/*.ts",
+    "eslint:fix": "eslint ./src/**/*.ts --fix",
+    "stylelint": "stylelint -c ./.stylelintrc src/**/*.scss",
+    "stylelint:fix": "stylelint -c ./.stylelintrc src/**/*.scss --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jxmked/jxmked.github.io.git"
+  },
+  "keywords": [
+    "webpack",
+    "multipage-support",
+    "multipage",
+    "typescript"
+  ],
+  "author": "Jovan De Guia",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/jxmked/jxmked.github.io/issues"
+  },
+  "homepage": "https://jxmked.github.io/jxmked.github.io/",
+  "devDependencies": {
+   "@total-typescript/ts-reset": "^0.3.7",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
+    "@typescript-eslint/parser": "^5.51.0",
+    "assets-webpack-plugin": "^7.1.1",
+    "browser-sync": "^3.0.4",
+    "browser-sync-webpack-plugin": "^2.4.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.7.3",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.34.0",
+    "file-loader": "^6.2.0",
+    "ga4-webpack-plugin": "^1.1.12",
+    "html-minifier": "^4.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "interpolate-html-plugin": "^4.0.0",
+    "jsonminify": "^0.4.2",
+    "mini-css-extract-plugin": "^2.7.2",
+    "postcss-loader": "^7.0.2",
+    "prettier": "^2.8.8",
+    "sass": "^1.93.2",
+    "sass-loader": "^16.0.5",
+    "style-loader": "^3.3.1",
+    "stylelint": "^15.10.3",
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-scss": "^5.2.1",
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.2.2",
+    "url-join": "^5.0.0",
+    "webpack": "^5.76.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-manifest-plugin": "^5.0.0",
+    "webpack-nano": "^1.1.1",
+    "webpack-pwa-manifest": "^4.3.0",
+    "workbox-webpack-plugin": "^7.3.0"
+  }
+}

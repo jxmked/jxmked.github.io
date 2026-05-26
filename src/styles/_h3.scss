@@ -1,0 +1,10 @@
+@use './abstracts/fonts' as ff;
+@use './abstracts/colours' as cc;
+
+h3 {
+  font-family: ff.$primary-paragraph;
+  padding: 2rem;
+  border: 1px solid cc.$aw-dl-gray-4;
+  color: cc.$aw-dd-gray-2;
+  border-radius: 14px;
+}

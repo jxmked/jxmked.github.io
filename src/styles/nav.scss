@@ -1,0 +1,22 @@
+@use './abstracts/fonts' as ff;
+@use './abstracts/colours' as cc;
+
+nav {
+  position: fixed;
+  top: 0%;
+  left: 50%;
+  transform: translatex(-50%);
+  width: 100%;
+  height: 4rem;
+  background-color: #7986cb;
+  box-sizing: border-box;
+  padding: 1rem;
+  display: flex;
+  color: cc.$aw-dd-gray-5;
+
+  > h4 {
+    place-self: center;
+    font-size: 1.2rem;
+    font-family: ff.$primary-paragraph;
+  }
+}
