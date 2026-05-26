@@ -30,7 +30,8 @@ const DEV_ADDR = {
 };
 
 const MISC_CONF = {
-  windowResizeable: false
+  windowResizeable: false,
+  OG_URL: "https://" + publicPath, // false = uses package.json homepage field, string = custom url
 }
 
 export default {

@@ -20,7 +20,9 @@ dotenv.config();
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const __read_file__ = fs.readFileSync(path.join(__dirname, './package.json'), { encoding: "utf8" });
+const __read_file__ = fs.readFileSync(path.join(__dirname, './package.json'), {
+  encoding: 'utf8'
+});
 const packageJson = JSON.parse(__read_file__);
 
 let devMode = process.env['NODE' + '_ENV'] !== 'production';
@@ -92,14 +94,19 @@ const prodPlugins = [
     basePath: '',
     publicPath: ENTRIES.publicPath,
     fileName: 'asset-manifest.json'
-  }),
-  new WorkboxPlugin.GenerateSW({
-    // these options encourage the ServiceWorkers to get in there fast
-    // and not allow any straggling "old" SWs to hang around
-    clientsClaim: true,
-    skipWaiting: true,
   })
 ];
+
+if (entries.MISC_CONF.enabled_workoffline) {
+  prodPlugins.push(
+    new WorkboxPlugin.GenerateSW({
+      // these options encourage the ServiceWorkers to get in there fast
+      // and not allow any straggling "old" SWs to hang around
+      clientsClaim: true,
+      skipWaiting: true
+    })
+  );
+}
 
 /**
  * Handle App Repository Url
@@ -195,7 +202,10 @@ export default function (env, config) {
         },
         'og:url': {
           property: 'og:url',
-          content: packageJson.homepage
+          content:
+            entries.MISC_CONF.OG_URL === false
+              ? packageJson.homepage
+              : entries.MISC_CONF.OG_URL
         },
         'og:type': {
           property: 'og:type',
@@ -307,7 +317,7 @@ export default function (env, config) {
               loader: 'css-loader',
               options: {
                 url: {
-                  filter: url => !((/\.(jpe?g|png|gif|svg|webp)$/).test(url))
+                  filter: (url) => !/\.(jpe?g|png|gif|svg|webp)$/.test(url)
                 }
               }
             },
