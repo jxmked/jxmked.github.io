@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkhero_page=self.webpackChunkhero_page||[]).push([[57],{156:()=>{console.log("Index Page")}},e=>{e(e.s=156)}]);
