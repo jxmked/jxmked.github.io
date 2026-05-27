@@ -8,14 +8,3 @@
   @include cssColors.apple_webkit;
   @include cssUtils.utils;
 }
-
-body {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: auto;
-  white-space: nowrap;
-  border: none;
-  background-color: #fff;
-  display: block;
-}

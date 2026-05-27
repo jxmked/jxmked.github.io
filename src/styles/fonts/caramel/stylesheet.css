@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Caramel';
+    src: url('Caramel-Regular.woff2') format('woff2'),
+        url('Caramel-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
