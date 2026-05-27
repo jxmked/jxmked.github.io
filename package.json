@@ -33,7 +33,7 @@
   },
   "homepage": "https://jxmked.github.io/jxmked.github.io/",
   "devDependencies": {
-   "@total-typescript/ts-reset": "^0.3.7",
+    "@total-typescript/ts-reset": "^0.3.7",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
     "assets-webpack-plugin": "^7.1.1",
@@ -44,7 +44,7 @@
     "dotenv": "^16.3.1",
     "eslint": "^8.34.0",
     "file-loader": "^6.2.0",
-    "ga4-webpack-plugin": "^1.1.12",
+    "ga4-webpack-plugin": "^1.2.3",
     "html-minifier": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
     "interpolate-html-plugin": "^4.0.0",
