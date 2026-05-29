@@ -34,6 +34,7 @@
   "homepage": "https://jxmked.github.io/jxmked.github.io/",
   "devDependencies": {
     "@total-typescript/ts-reset": "^0.3.7",
+    "@types/colorthief": "^2.6.1",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
     "assets-webpack-plugin": "^7.1.1",
@@ -67,5 +68,10 @@
     "webpack-nano": "^1.1.1",
     "webpack-pwa-manifest": "^4.3.0",
     "workbox-webpack-plugin": "^7.3.0"
+  },
+  "dependencies": {
+    "@types/chroma-js": "^3.1.2",
+    "chroma-js": "^3.2.0",
+    "colorthief": "^3.3.1"
   }
 }
