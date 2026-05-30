@@ -25,6 +25,8 @@ if (Math.random() < 0.5) {
 // img.src = './jovan-de-guia-JE5UAqEkt88-unsplash.jpg';
 
 img.addEventListener('load', function () {
+
+  // return;
   const color = getColorSync(img);
 
   if (!color) return;
