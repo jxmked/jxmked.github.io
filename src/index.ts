@@ -1,8 +1,8 @@
 import './common-import';
 import './styles/index.scss';
 
+import { invertedRGB, getComplementaryRGB } from './util/rgb';
 import { getColorSync } from 'colorthief';
-import chroma from 'chroma-js';
 
 const divSequel = document.getElementsByClassName(
   'div-sequel'
@@ -16,12 +16,12 @@ const h_header = document.getElementById('hero-primary-heading') as HTMLHeadingE
 const img = new Image();
 img.crossOrigin = 'Anonymous'; // Prevents CORS issues
 
-if (Math.random() < 0.5) {
-  img.src = './jovan-de-guia-AfRn_BgzCP8-unsplash.jpg';
-} else {
-  img.src = './jovan-de-guia-JE5UAqEkt88-unsplash.jpg';
-}
-// img.src = './jovan-de-guia-AfRn_BgzCP8-unsplash.jpg';
+// if (Math.random() < 0.5) {
+//   img.src = './jovan-de-guia-AfRn_BgzCP8-unsplash.webp';
+// } else {
+//   img.src = './jovan-de-guia-JE5UAqEkt88-unsplash.webp';
+// }
+img.src = './20260530_104050.webp';
 // img.src = './jovan-de-guia-JE5UAqEkt88-unsplash.jpg';
 
 img.addEventListener('load', function () {
@@ -29,7 +29,7 @@ img.addEventListener('load', function () {
 
   if (!color) return;
 
-  const rgb = invertRGBArray(color.rgb(), 1);
+  const rgb = invertedRGB(color.rgb(), 1);
   const invertedColor = getComplementaryRGB(rgb);
 
   for (const e of Array.from(h_container)) {
@@ -47,27 +47,3 @@ img.addEventListener('load', function () {
     e.style.backgroundColor = rgbStr;
   }
 });
-
-function invertRGBArray(rgb: ColorRGB, brightness: number): ColorRGB {
-  return {
-    r: Math.floor((255 - rgb.r) * brightness),
-    g: Math.floor((255 - rgb.g) * brightness),
-    b: Math.floor((255 - rgb.b) * brightness)
-  };
-}
-
-function getComplementaryRGB(rgb: ColorRGB): ColorRGB {
-  const color = chroma([rgb.r, rgb.g, rgb.b]);
-
-  const [h, s, l] = color.hsl();
-
-  const compHue = (h + 180) % 360;
-
-  const colorArray = chroma.hsl(compHue, s, l).rgb().map(Math.round);
-
-  return {
-    r: colorArray[0],
-    g: colorArray[1],
-    b: colorArray[2]
-  };
-}

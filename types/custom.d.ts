@@ -7,3 +7,9 @@ interface ColorRGB {
   g: number;
   b: number;
 }
+
+interface ColorHSL {
+  h: number;
+  s: number;
+  l: number;
+}
