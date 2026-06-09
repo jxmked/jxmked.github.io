@@ -71,7 +71,9 @@
   },
   "dependencies": {
     "@types/chroma-js": "^3.1.2",
+    "@types/raf": "^3.4.3",
     "chroma-js": "^3.2.0",
-    "colorthief": "^3.3.1"
+    "colorthief": "^3.3.1",
+    "raf": "^3.4.1"
   }
 }

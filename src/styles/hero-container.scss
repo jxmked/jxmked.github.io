@@ -15,7 +15,19 @@ div.hero-container {
   text-align: center;
   margin: 0;
   padding: 0;
-  background-color: #111111;
+  // background-color: #111111;
+
+  > canvas#hero-canvas {
+    background-color: #fff;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+  }
 
   > div.hero-panel {
     isolation: isolate;
@@ -29,8 +41,6 @@ div.hero-container {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-
 
     > h4#hero-primary-heading {
       // background-image: $bg_image;
@@ -69,7 +79,6 @@ div.hero-container {
       background-color: transparent;
 
       display: none;
-
     }
 
     > div {
