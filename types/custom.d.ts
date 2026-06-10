@@ -13,3 +13,8 @@ interface ColorHSL {
   s: number;
   l: number;
 }
+
+interface ICoordinate {
+  x: number;
+  y: number;
+}

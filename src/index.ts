@@ -3,22 +3,89 @@ import './styles/index.scss';
 
 import { invertedRGB, getComplementaryRGB } from './util/rgb';
 import { getColorSync } from 'colorthief';
+
+import Stats from './lib/stats';
+
 import raf from 'raf';
 
 const canvas = document.getElementById('hero-canvas') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 
+const stats = new Stats(ctx);
+
+stats.text({ x: 50, y: 50 }, '', ' FPS');
+// prettier-ignore
+stats.container({ x: 10, y: 10 }, { x: 180, y: 60 });
+
+Stats.TEXT_COLOR = '#FFFFFF';
+Stats.SHOW_FPS = true;
+
+const line_speed = 0.1; // px per second
+
+let _lastTime = 0;
+let cur_pos = 0;
+
+const amplitude = 60; // Peak height of the wave (2D radius)
+const wavelength = 50; // Width of one full wave cycle (2D pitch)
+let cycles = 10; // Number of wave peaks
+const pointsCount = 100; // Curve resolution
+let offset = 0; // Animates the movement along the horizontal axis
+
 function loop(time: number) {
+  const dt = time - _lastTime;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+  ctx.save();
+
+  ctx.translate(canvas.width / 2, canvas.height / 2); // Move origin to center
+  ctx.rotate(Math.PI * 90 / 180); // Rotate 90 degrees to make the wave vertical
+  ctx.translate(-canvas.width / 2, -canvas.height / 2); // Move origin back to top-left
+
+  const totalWidth = cycles * wavelength;
+  const startX = (canvas.width - totalWidth) / 2; // Centers the wave horizontally
+  const centerY = canvas.height / 2; // Centers the wave vertically
+
+  for (let i = 0; i <= pointsCount; i++) {
+    // Percentage across the drawing path (0.0 to 1.0)
+    const percent = i / pointsCount;
+
+    // Calculate the static X position along the line
+    const x = startX + percent * totalWidth;
+
+    // Calculate the angle based on our position + animation offset
+    const angle = percent * cycles * 2 * Math.PI - offset;
+
+    // Pure 2D Math: Y position follows a perfect sine wave
+    const y = centerY + amplitude * Math.sin(angle);
+
+    ctx.arc(x, y, 2, 0, 2 * Math.PI); // Draw a small circle at the point
+
+    // if (i === 0) {
+    //   ctx.moveTo(x, y);
+    // } else {
+    //   ctx.lineTo(x, y);
+    // }
+  }
+
+  ctx.stroke();
+
+  // Change this value to adjust the speed of the crawling effect
+  offset += 0.05;
+
+  _lastTime = time;
+  
+  ctx.restore();
+  stats.mark();
   raf(loop);
 }
 
 function hero_resize() {
   const w = window.innerWidth * 2;
-  const h = canvas.height;
+  const h = window.innerHeight * 2;
   canvas.width = w;
   canvas.height = h;
-
-  drawHelixOnCanvas(ctx, w, h);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -72,6 +139,7 @@ function drawHelixOnCanvas(
 ): void {
   const points = generateHelixPoints(400); // 400 steps for a ultra-smooth curve
   const scale = 40; // Scale factor to make the math coordinates fit the pixel space
+  console.log(points);
 
   ctx.clearRect(0, 0, width, height);
   ctx.beginPath();
