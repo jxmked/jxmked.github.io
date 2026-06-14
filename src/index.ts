@@ -26,7 +26,7 @@ let _lastTime = 0;
 
 const speed = 10000;
 const maxTheta = 12 * Math.PI;
-const climb_rate = 1.9;
+const climb_rate = 3.9;
 
 let _x = canvas.width / 2;
 let _y = 0;
@@ -37,6 +37,8 @@ function loop(time: number) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   const theta = 0.001 + ((time % speed) / speed) * (maxTheta - 0.001);
+
+  console.log(theta);
   const t = lerp(-4 * Math.PI, 4 * Math.PI, (time % speed) / speed);
 
   const r = (40 * Math.sin(theta)) / theta;
@@ -64,9 +66,9 @@ function loop(time: number) {
   _x = clamp(_x, 0, canvas.width);
   _y = clamp(_y, 0, canvas.height);
 
-  console.log(_x, _y);
+  // console.log(_x, _y);
 
-  ctx.arc(_x, _y, 5, 0, 2 * Math.PI);
+  ctx.arc(xx, yy, 10, 0, 2 * Math.PI);
   ctx.fillStyle = '#FF0000';
   ctx.fill();
 
