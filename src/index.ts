@@ -4,6 +4,8 @@ import './styles/index.scss';
 import { invertedRGB, getComplementaryRGB } from './util/rgb';
 import { getColorSync } from 'colorthief';
 
+import { lerp, clamp } from './util';
+
 import Stats from './lib/stats';
 
 import raf from 'raf';
@@ -93,11 +95,3 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('resize', hero_resize);
-
-function lerp(a: number, b: number, t: number) {
-  return a + (b - a) * t;
-}
-
-function clamp(value: number, min: number, max: number) {
-  return Math.max(min, Math.min(max, value));
-}
